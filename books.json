@@ -1,0 +1,48 @@
+const express = require("express");
+const fs = require("fs");
+
+const app = express();
+const PORT = 3000;
+
+// Middleware to parse JSON requests
+app.use(express.json());
+
+// In-memory array for books
+let books = [];
+
+// Load existing books from book.json (if exists)
+fs.readFile("book.json", "utf8", (err, data) => {
+  if (!err && data) {
+    books = JSON.parse(data);
+  }
+});
+
+// API to add a new book
+app.post("/add-book", (req, res) => {
+  const { title, author, year } = req.body;
+
+  if (!title || !author || !year) {
+    return res.status(400).json({ error: "Title, author, and year are required." });
+  }
+
+  const newBook = { id: books.length + 1, title, author, year };
+  books.push(newBook);
+
+  // Save to book.json
+  fs.writeFile("book.json", JSON.stringify(books, null, 2), (err) => {
+    if (err) {
+      return res.status(500).json({ error: "Failed to save the book." });
+    }
+    res.status(201).json({ message: "Book added successfully!", book: newBook });
+  });
+});
+
+// API to get all books
+app.get("/books", (req, res) => {
+  res.json(books);
+});
+
+// Start the server
+app.listen(PORT, () => {
+  console.log(Server is running on http://localhost:${PORT});
+});

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sticky Navbar</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      } /* Navbar styles */
+      .navbar {
+        position: sticky;
+        top: 0;
+        background-color: #333;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        z-index: 1000;
+      }
+      .navbar a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 15px;
+      }
+      .navbar a:hover {
+        background-color: #575757;
+        border-radius: 5px;
+      } /* Main content styles */
+      .content {
+        padding: 20px;
+        background-color: #f4f4f4;
+        height: 2000px; /* For demonstration */
+      }
+      .content h1 {
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div class="navbar">
+      <div class="logo">My Website</div>
+      <div class="nav-links">
+        <a href="#home">Home</a> <a href="#about">About</a>
+        <a href="#services">Services</a> <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <!-- Main Content -->
+    <div class="content">
+      <h1 id="home">Home</h1>
+      <p>Welcome to the sticky navbar demo page!</p>
+      <h1 id="about">About</h1>
+      <p>Learn more about this amazing sticky navbar.</p>
+      <h1 id="services">Services</h1>
+      <p>Check out the cool services we offer.</p>
+      <h1 id="contact">Contact</h1>
+      <p>Feel free to get in touch with us!</p>
+    </div>
+  </body>
+</html>
+2
